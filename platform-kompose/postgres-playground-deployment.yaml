@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -o ../../../kubernetes-deployments/platform/
+    kompose.version: 1.19.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgres-playground
+  name: postgres-playground
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -o ../../../kubernetes-deployments/platform/
+        kompose.version: 1.19.0 ()
+      creationTimestamp: null
+      labels:
+        io.kompose.service: postgres-playground
+    spec:
+      containers:
+      - env:
+        - name: POSTGRES_DB
+        - name: POSTGRES_PASSWORD
+        - name: POSTGRES_USER
+        image: postgres:10.8-alpine
+        name: postgres-playground
+        ports:
+        - containerPort: 5432
+        resources: {}
+      restartPolicy: Always
+status: {}

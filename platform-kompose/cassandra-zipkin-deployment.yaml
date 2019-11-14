@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -o ../../../kubernetes-deployments/platform/
+    kompose.version: 1.19.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cassandra-zipkin
+  name: cassandra-zipkin
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -o ../../../kubernetes-deployments/platform/
+        kompose.version: 1.19.0 ()
+      creationTimestamp: null
+      labels:
+        io.kompose.service: cassandra-zipkin
+    spec:
+      containers:
+      - image: cassandra
+        name: cassandra-zipkin
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -o ../../../kubernetes-deployments/platform/
+    kompose.version: 1.19.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgres-evaluations
+  name: postgres-evaluations
+spec:
+  ports:
+  - name: "25432"
+    port: 25432
+    targetPort: 5432
+  selector:
+    io.kompose.service: postgres-evaluations
+status:
+  loadBalancer: {}

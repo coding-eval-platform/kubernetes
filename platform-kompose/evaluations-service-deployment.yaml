@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -o ../../../kubernetes-deployments/platform/
+    kompose.version: 1.19.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: evaluations-service
+  name: evaluations-service
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -o ../../../kubernetes-deployments/platform/
+        kompose.version: 1.19.0 ()
+      creationTimestamp: null
+      labels:
+        io.kompose.service: evaluations-service
+    spec:
+      containers:
+      - env:
+        - name: AUTHENTICATION_JWT_APIGATEWAY_PUBLICKEY
+          value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3Qold2jMzk/Ca3yYusjm9hxNp3EVBnzWD8GbTSfNPV+7z/+2f9LRSx2CztMCwgPciKC+7fWHzKcUgidLbPqPpKjqlbJQ0KKp7rPHOTmAaSaVX+OVSi00p7lbU1Hdepjdzt0LTwT3EBHTU0fGghTOQZffVtKzyg4Gth6iKEhIAHQztQ63JI5c6F1o4eGwJ8JrIHcjUewXO8HDBsU+3UGtiw8ixXVZ4sfGMrWkPylAC81gCWFfQhWggGz0O9xMEBD30C1EgBBZEN8C0Wg3EgDItiUrudqvxcgnCa1ssjEgSY+kYgMsDwcqpzO5PiISNd2JIc31miM99XaQkArYIidBTwIDAQAB
+        - name: SPRING_DATASOURCE_PASSWORD
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://postgres-evaluations:5432/
+        - name: SPRING_DATASOURCE_USERNAME
+        - name: SPRING_KAFKA_BOOTSTRAPSERVERS
+          value: kafka:9092
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: SPRING_ZIPKIN_BASEURL
+          value: http://zipkin:9411/
+        - name: eureka.client.serviceUrl.defaultZone
+          value: http://service-registry:8761/eureka/
+        image: 'itbacep/evaluations-service:'
+        name: evaluations-service
+        resources: {}
+      restartPolicy: Always
+status: {}
