@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# namespace: coding-eval-platform
+resources:
+# Kafka stuff
+- zookeeper-kafka
+- kafka
+# Databases
+- users-service-postgres
+- evaluations-service-postgres
+- playground-service-postgres
+- lti-service-postgres
+# Zipkin
+- zipkin
+# Service Registry
+- service-registry
+# Microservices
+- users-service
+- evaluations-service
+- playground-service
+- executor-service
+- lti-service
+# API Gateway
+- api-gateway
+# Frontends
+- lti-app
+- basic-ui

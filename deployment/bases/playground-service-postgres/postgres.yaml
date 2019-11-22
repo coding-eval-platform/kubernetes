@@ -1,0 +1,28 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: playground-service-postgres-cluster
+spec:
+  teamId: "playground-service"
+  volume:
+    size: 1Gi
+  numberOfInstances: 3
+  enableMasterLoadBalancer: false
+  enableReplicaLoadBalancer: false
+  users:
+    playground-service:
+      - createdb
+  databases:
+    playgroundservice: playground-service
+
+  postgresql:
+      version: "11"
+
+  resources:
+    requests:
+      cpu: 20m
+      memory: 100Mi
+    limits:
+      cpu: 100m
+      memory: "1Gi"
+
