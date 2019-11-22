@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- configmap.yaml
+- deployment.yaml
+- service.yaml
+images:
+- name: itbacep/users-service
+  newName: itbacep/users-service
+  newTag: 2d9d58dbbf1e049829655d636b78d9628b1990f5

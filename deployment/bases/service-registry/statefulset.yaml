@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: service-registry
+spec:
+  serviceName: service-registry
+  replicas: 2
+  selector:
+    matchLabels:
+      app: service-registry
+  template:
+    metadata:
+      labels:
+        app: service-registry
+    spec:
+      containers:
+      - name: service-registry
+        image: itbacep/service-registry
+        ports:
+        - containerPort: 8761
+        resources: 
+          requests:
+            cpu: "10m"
+            memory: "512Mi"
+          limits:
+            cpu: "100m"
+            memory: "1Gi"
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: eureka.client.serviceUrl.defaultZone
+          value: http://service-registry-0.service-registry:8761/eureka/,http://service-registry-1.service-registry:8761/eureka/
+        - name: eureka.instance.preferIpAddress
+          value: "false"
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: EUREKA_CLIENT_REGISTERWITHEUREKA
+          value: "true"
+        - name: EUREKA_CLIENT_FETCHREGISTRY
+          value: "true"
+        - name: EUREKA_INSTANCE_HOSTNAME
+          value: ${POD_NAME}.service-registry

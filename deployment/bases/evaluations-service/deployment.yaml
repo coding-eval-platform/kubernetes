@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evaluations-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: evaluations-service
+  template:
+    metadata:
+      labels:
+        app: evaluations-service
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: evaluations-service
+        image: itbacep/evaluations-service
+        ports:
+        - containerPort: 8000
+        resources: 
+          requests:
+            cpu: "10m"
+            memory: "512Mi"
+          limits:
+            cpu: "100m"
+            memory: "1Gi"
+        env:
+        - name: eureka.client.serviceUrl.defaultZone
+          value: http://service-registry-0.service-registry:8761/eureka/,http://service-registry-1.service-registry:8761/eureka/
+        - name: SPRING_KAFKA_BOOTSTRAPSERVERS
+          value: kafka-headless:29092
+        - name: AUTHENTICATION_JWT_APIGATEWAY_PUBLICKEY
+          value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA3Qold2jMzk/Ca3yYusjm9hxNp3EVBnzWD8GbTSfNPV+7z/+2f9LRSx2CztMCwgPciKC+7fWHzKcUgidLbPqPpKjqlbJQ0KKp7rPHOTmAaSaVX+OVSi00p7lbU1Hdepjdzt0LTwT3EBHTU0fGghTOQZffVtKzyg4Gth6iKEhIAHQztQ63JI5c6F1o4eGwJ8JrIHcjUewXO8HDBsU+3UGtiw8ixXVZ4sfGMrWkPylAC81gCWFfQhWggGz0O9xMEBD30C1EgBBZEN8C0Wg3EgDItiUrudqvxcgnCa1ssjEgSY+kYgMsDwcqpzO5PiISNd2JIc31miM99XaQkArYIidBTwIDAQAB
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: SPRING_ZIPKIN_BASEURL
+          value: http://zipkin:9411/
+
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: evaluations-service.evaluations-service-postgres-cluster.credentials
+              key: username
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: evaluations-service.evaluations-service-postgres-cluster.credentials
+              key: password
+        
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://evaluations-service-postgres-cluster:5432/evaluationsservice

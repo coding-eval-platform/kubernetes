@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: executor-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: executor-service
+  template:
+    metadata:
+      labels:
+        app: executor-service
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: executor-service
+        image: itbacep/executor-service
+        ports:
+        - containerPort: 80
+        resources: 
+          requests:
+            cpu: "10m"
+            memory: "512Mi"
+          limits:
+            cpu: "100m"
+            memory: "1Gi"
+        env:
+        - name: SPRING_KAFKA_BOOTSTRAPSERVERS
+          value: kafka-headless:29092
+        - name: SPRING_ZIPKIN_BASEURL
+          value: http://zipkin:9411/
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod

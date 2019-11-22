@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: basic-ui
+  template:
+    metadata:
+      labels:
+        app: basic-ui
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: basic-ui
+        image: itbacep/basic-ui
+        ports:
+        - containerPort: 8000
+        resources: 
+          requests:
+            cpu: "10m"
+            memory: "512Mi"
+          limits:
+            cpu: "100m"
+            memory: "1Gi"
+        env:
+        - name: API_HOST
+          value: https://api.cep.bellotapps.com

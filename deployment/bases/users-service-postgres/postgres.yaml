@@ -1,0 +1,28 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: users-service-postgres-cluster
+spec:
+  teamId: "users-service"
+  volume:
+    size: 1Gi
+  numberOfInstances: 3
+  enableMasterLoadBalancer: false
+  enableReplicaLoadBalancer: false
+  users:
+    users-service:
+      - createdb
+  databases:
+    usersservice: users-service
+
+  postgresql:
+      version: "11"
+
+  resources:
+    requests:
+      cpu: 20m
+      memory: 100Mi
+    limits:
+      cpu: 100m
+      memory: "1Gi"
+

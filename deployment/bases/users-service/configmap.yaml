@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: users-service-config
+  labels:
+    app: users-service
+data:
+  FIRSTUSER_USERNAME: administrator
+  FIRSTUSER_PASSWORD: Cep1234!

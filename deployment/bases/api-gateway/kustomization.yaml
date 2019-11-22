@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+images:
+- name: itbacep/api-gateway
+  newName: itbacep/api-gateway
+  newTag: a4fb96c8523196256660f7c3525293cdb3912998

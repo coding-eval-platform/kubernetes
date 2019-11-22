@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+images:
+- name: itbacep/evaluations-service
+  newName: itbacep/evaluations-service
+  newTag: 8940fac3ecca77d5feb63789fa65680a74a54a8a

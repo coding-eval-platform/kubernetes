@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lti-service
+spec:
+  ports:
+  - port: 8000
+  selector:
+    app: lti-service
