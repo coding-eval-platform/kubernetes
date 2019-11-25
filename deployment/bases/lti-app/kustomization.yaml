@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/lti-app
   newName: itbacep/lti-app
-  newTag: c90897d74e67cd77e9b5ee35f26fad7b9fa0f8ee
+  newTag: e3b3006331abb6400c2bec861397e0cc05425d9b

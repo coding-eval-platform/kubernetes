@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/basic-ui
   newName: itbacep/basic-ui
-  newTag: 29012348f2639f6ae2c7f39ec58b6901fcf2975f
+  newTag: ea4dba9a01d4cd2cd994a6a1eaf3d0d8ca5971b4

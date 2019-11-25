@@ -17,13 +17,13 @@ spec:
       - name: executor-service
         image: itbacep/executor-service
         ports:
-        - containerPort: 80
+        - containerPort: 8010
         resources: 
           requests:
-            cpu: "10m"
+            cpu: "100m"
             memory: "512Mi"
           limits:
-            cpu: "100m"
+            cpu: "300m"
             memory: "1Gi"
         env:
         - name: SPRING_KAFKA_BOOTSTRAPSERVERS

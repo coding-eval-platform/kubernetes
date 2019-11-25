@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: basic-ui
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: basic-ui
@@ -20,11 +20,11 @@ spec:
         - containerPort: 8000
         resources: 
           requests:
-            cpu: "10m"
-            memory: "512Mi"
-          limits:
-            cpu: "100m"
+            cpu: "200m"
             memory: "1Gi"
+          limits:
+            cpu: "600m"
+            memory: "2Gi"
         env:
         - name: API_HOST
           value: https://api.cep.bellotapps.com
