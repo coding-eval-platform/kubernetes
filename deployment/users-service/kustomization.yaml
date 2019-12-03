@@ -7,4 +7,4 @@ resources:
 images:
 - name: itbacep/users-service
   newName: itbacep/users-service
-  newTag: 2d9d58dbbf1e049829655d636b78d9628b1990f5
+  newTag: 1.0.0-RELEASE

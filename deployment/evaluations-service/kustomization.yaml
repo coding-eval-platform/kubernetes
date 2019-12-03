@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/evaluations-service
   newName: itbacep/evaluations-service
-  newTag: 8940fac3ecca77d5feb63789fa65680a74a54a8a
+  newTag: 1.0.0-RELEASE

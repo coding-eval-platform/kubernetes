@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/playground-service
   newName: itbacep/playground-service
-  newTag: 5e4c3b0f115c82cede17023d496eb32110bc9ad1
+  newTag: 1.0.0-RELEASE

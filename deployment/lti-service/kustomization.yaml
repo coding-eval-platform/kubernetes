@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/lti-service
   newName: itbacep/lti-service
-  newTag: e61142428ef9f893a204feee4fc97238ff3f301a
+  newTag: 1.0.0-RELEASE

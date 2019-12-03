@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/lti-app
   newName: itbacep/lti-app
-  newTag: e3b3006331abb6400c2bec861397e0cc05425d9b
+  newTag: 1.0.1-RELEASE

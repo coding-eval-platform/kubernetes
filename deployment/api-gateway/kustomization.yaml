@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/api-gateway
   newName: itbacep/api-gateway
-  newTag: 67c1028077964b1c234f973f53eb61b81897f739
+  newTag: 1.0.0-RELEASE

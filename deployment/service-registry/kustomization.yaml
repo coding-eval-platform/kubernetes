@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/service-registry
   newName: itbacep/service-registry
-  newTag: 7c59ceb8d4112b99cc20118a1bdd4bcda761cd03
+  newTag: 1.0.0-RELEASE

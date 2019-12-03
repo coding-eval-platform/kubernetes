@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/executor-service
   newName: itbacep/executor-service
-  newTag: 526d37c35328c68d6c9fc3ff16d7617d6f7d64a2
+  newTag: 1.0.0-RELEASE
