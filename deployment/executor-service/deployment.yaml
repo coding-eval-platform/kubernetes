@@ -20,7 +20,7 @@ spec:
         - containerPort: 8010
         resources: 
           requests:
-            cpu: "100m"
+            cpu: "200m"
             memory: "512Mi"
           limits:
             cpu: "300m"
