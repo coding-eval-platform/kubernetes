@@ -6,4 +6,4 @@ resources:
 images:
 - name: itbacep/basic-ui
   newName: itbacep/basic-ui
-  newTag: 1.0.0-RELEASE
+  newTag: 1.0.2-RELEASE
