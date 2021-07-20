@@ -4,7 +4,7 @@ metadata:
   name: service-registry
 spec:
   serviceName: service-registry
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: service-registry
@@ -18,7 +18,7 @@ spec:
         image: itbacep/service-registry
         ports:
         - containerPort: 8761
-        resources: 
+        resources:
           requests:
             cpu: "10m"
             memory: "512Mi"

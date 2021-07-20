@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: executor-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: executor-service
@@ -18,7 +18,7 @@ spec:
         image: itbacep/executor-service
         ports:
         - containerPort: 8010
-        resources: 
+        resources:
           requests:
             cpu: "200m"
             memory: "512Mi"
