@@ -6,7 +6,7 @@ spec:
   teamId: "lti-service"
   volume:
     size: 1Gi
-  numberOfInstances: 3
+  numberOfInstances: 1
   enableMasterLoadBalancer: false
   enableReplicaLoadBalancer: false
   users:
@@ -25,4 +25,3 @@ spec:
     limits:
       cpu: 100m
       memory: "1Gi"
-
