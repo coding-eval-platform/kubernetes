@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: users-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: users-service
@@ -18,7 +18,7 @@ spec:
         image: itbacep/users-service
         ports:
         - containerPort: 8000
-        resources: 
+        resources:
           requests:
             cpu: "100m"
             memory: "512Mi"
@@ -40,7 +40,7 @@ spec:
           value: prod
         - name: SPRING_ZIPKIN_BASEURL
           value: http://zipkin:9411/
-        
+
         - name: USERSSERVICE_FIRSTUSER_USERNAME
           valueFrom:
             configMapKeyRef:
@@ -55,13 +55,13 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: users-service.users-service-postgres-cluster.credentials
+              name: users-service.users-service-postgres-cluster.credentials.postgresql.acid.zalan.do
               key: username
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: users-service.users-service-postgres-cluster.credentials
+              name: users-service.users-service-postgres-cluster.credentials.postgresql.acid.zalan.do
               key: password
-        
+
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://users-service-postgres-cluster:5432/usersservice

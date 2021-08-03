@@ -34,26 +34,26 @@ spec:
           requests:
             cpu: "0.1"
             memory: "512Mi"
-    - id: 1
-      brokerConfigGroup: "default"
-      brokerConfig:
-        resourceRequirements:
-          limits:
-            cpu: "0.3"
-            memory: "3Gi"
-          requests:
-            cpu: "0.1"
-            memory: "512Mi"
-    - id: 2
-      brokerConfigGroup: "default"
-      brokerConfig:
-        resourceRequirements:
-          limits:
-            cpu: "0.3"
-            memory: "3Gi"
-          requests:
-            cpu: "0.1"
-            memory: "512Mi"
+    # - id: 1
+    #   brokerConfigGroup: "default"
+    #   brokerConfig:
+    #     resourceRequirements:
+    #       limits:
+    #         cpu: "0.3"
+    #         memory: "3Gi"
+    #       requests:
+    #         cpu: "0.1"
+    #         memory: "512Mi"
+    # - id: 2
+    #   brokerConfigGroup: "default"
+    #   brokerConfig:
+    #     resourceRequirements:
+    #       limits:
+    #         cpu: "0.3"
+    #         memory: "3Gi"
+    #       requests:
+    #         cpu: "0.1"
+    #         memory: "512Mi"
   rollingUpgradeConfig:
     failureThreshold: 1
   listenersConfig:
@@ -85,7 +85,7 @@ spec:
       }
     clusterConfig: |
       {
-        "min.insync.replicas": 3
+        "min.insync.replicas": 1
       }
     config: |
       # Copyright 2017 LinkedIn Corp. Licensed under the BSD 2-Clause License (the "License"). See License in the project root for license information.
@@ -272,5 +272,3 @@ spec:
       webserver.accesslog.path=access.log
       # HTTP Request Log retention days
       webserver.accesslog.retention.days=14
-    
-  

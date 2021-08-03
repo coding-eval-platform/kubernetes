@@ -18,7 +18,7 @@ spec:
         image: itbacep/basic-ui
         ports:
         - containerPort: 8000
-        resources: 
+        resources:
           requests:
             cpu: "200m"
             memory: "1Gi"
@@ -27,4 +27,4 @@ spec:
             memory: "2Gi"
         env:
         - name: API_HOST
-          value: https://api.cep.bellotapps.com
+          value: https://api.rattarchy.xyz

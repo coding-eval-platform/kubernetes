@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: playground-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: playground-service
@@ -18,7 +18,7 @@ spec:
         image: itbacep/playground-service
         ports:
         - containerPort: 8000
-        resources: 
+        resources:
           requests:
             cpu: "100m"
             memory: "512Mi"
@@ -40,13 +40,13 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: playground-service.playground-service-postgres-cluster.credentials
+              name: playground-service.playground-service-postgres-cluster.credentials.postgresql.acid.zalan.do
               key: username
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: playground-service.playground-service-postgres-cluster.credentials
+              name: playground-service.playground-service-postgres-cluster.credentials.postgresql.acid.zalan.do
               key: password
-        
+
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://playground-service-postgres-cluster:5432/playgroundservice

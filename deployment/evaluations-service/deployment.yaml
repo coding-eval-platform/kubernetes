@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: evaluations-service
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: evaluations-service
@@ -18,7 +18,7 @@ spec:
         image: itbacep/evaluations-service
         ports:
         - containerPort: 8000
-        resources: 
+        resources:
           requests:
             cpu: "100m"
             memory: "512Mi"
@@ -40,13 +40,13 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: evaluations-service.evaluations-service-postgres-cluster.credentials
+              name: evaluations-service.evaluations-service-postgres-cluster.credentials.postgresql.acid.zalan.do
               key: username
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: evaluations-service.evaluations-service-postgres-cluster.credentials
+              name: evaluations-service.evaluations-service-postgres-cluster.credentials.postgresql.acid.zalan.do
               key: password
-        
+
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://evaluations-service-postgres-cluster:5432/evaluationsservice
